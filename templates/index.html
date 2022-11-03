@@ -1,0 +1,35 @@
+{% extends "bootstrap/base.html" %}
+{% block styles %}
+<!-- CSS only for Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+{% endblock %}
+{% block scripts %}
+<!-- JavaScript Bundle with Popper for Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+{{super()}}
+{% endblock %}
+
+
+{% block title %}Coffee & Work{% endblock %}
+{% include "navbar.html" %}
+
+{% block content %}
+<div class="cafe-results col-4">
+        <ul class="results">
+            {%for i in range(0, len) %}
+          <li class="preview">
+            <a class="preview__link preview__link--active" href="#23456">
+              <figure class="preview__fig">
+                <img class="preview__img" src="{{data[i]['img_url']}}" alt="Test" />
+              </figure>
+              <div class="preview__data">
+                <h4 class="preview__title">{{data[i]["name"]}}</h4>
+                <p class="preview__publisher">{{data[i]["location"]}}</p>
+              </div>
+            </a>
+          </li>
+            {%endfor%}
+        </ul>
+</div>
+{% endblock %}
